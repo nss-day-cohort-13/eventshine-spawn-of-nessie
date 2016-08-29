@@ -1,4 +1,6 @@
 <!-- block body and end block put code inide blocks into the body of base.html -->
+{% extends 'nessie/base.html' %}
+{% block body%}
   {% if all_events %}
     <h1> Events </h1>
       {% for event in all_events %}
@@ -17,3 +19,4 @@
 
 
 <!-- e = Event(name="Squiggly Bob", city="Key West", description="come squiggly bop with us", start_date="2017-01-15 7:40", end_date="2017-01-15 7:40", attendee_limit="200") -->
+{% endblock%}
