@@ -20,3 +20,7 @@ class IndexView(generic.ListView):
   def get_queryset(self):
     return Event.objects.all()
 
+class EventCreate(CreateView):
+  model = Event
+  fields = ['name', 'description', 'city', 'start_date', 'end_date', 'attendee_limit']
+
