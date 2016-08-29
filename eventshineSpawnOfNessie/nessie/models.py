@@ -7,6 +7,7 @@ from django.db import models
 
 
 class Event(models.Model):
+  # event_users = models.ForeignKey(EventUsers, on_delete = models.CASCADE)
   name = models.CharField(max_length=200)
   description = models.CharField(max_length=200)
   city = models.CharField(max_length=200)
