@@ -1,0 +1,19 @@
+<!-- block body and end block put code inide blocks into the body of base.html -->
+  {% if all_events %}
+    <h1> Events </h1>
+      {% for event in all_events %}
+      <ul><h4><a href="">{{event.name}}</a></h4>
+      <li>{{event.city}}</li>
+      <li>{{event.description}}</li>
+      <li>{{event.city}}</li>
+      <li>{{event.start_date}}</li>
+      <li>{{event.end_date}}</li>
+      </ul>
+
+      {% endfor %}
+  {% else %}
+    <h2>no events</h2>
+  {% endif %}
+
+
+<!-- e = Event(name="Squiggly Bob", city="Key West", description="come squiggly bop with us", start_date="2017-01-15 7:40", end_date="2017-01-15 7:40", attendee_limit="200") -->
