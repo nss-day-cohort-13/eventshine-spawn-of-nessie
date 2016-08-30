@@ -7,6 +7,12 @@ urlpatterns = [
 
     url(r'^register/', views.Register.as_view(), name='register'),
 
+    url(r'^login_user/', views.login_user.as_view(), name='login_user'),
+
+    url(r'^login/', views.Login.as_view(), name='Login'),
+
+    url(r'^logout/', views.logout_user, name='logout'),
+
     url(r'^register_user/', views.register_user, name='register_user'),
 
     url(r'event/add$', views.EventCreate.as_view(), name='event_add'),

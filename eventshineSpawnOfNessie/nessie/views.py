@@ -50,7 +50,7 @@ class Login(generic.TemplateView):
     template_name = 'nessie/login.html'
 
 
-def loginUser(request):
+def login_user(request):
     '''
     Login module for users
     '''
@@ -60,7 +60,7 @@ def loginUser(request):
 
     if auth:
         try:
-            user = authenticateUser(request, username, password)  # returnsuser object if user is authenticated
+            user = authenticate_user(request, username, password)  # returnsuser object if user is authenticated
             login(request, user)
             return render(request, 'nessie/index.html')
         except:
