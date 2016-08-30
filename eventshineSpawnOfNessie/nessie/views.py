@@ -28,13 +28,32 @@ class Register(generic.TemplateView):
   template_name='nessie/register_user.html'
 
 def register_user(request):
-    username = request.POST['userName']
-    password = request.POST['passWord']
+    username = request.POST['username']
+    password = request.POST['password']
     email = request.POST['email']
 
     user = User.objects.create_user(username=username, password=password,
                                     email=email)
     user.save()
+    return redirect('nessie:index')
+
+
+
+def authenticate_user(request, username, password):
+
+    user = authenticate(username=userName, password=passWord)
+
+    if user is not None:
+        return user
+    else:
+        return False
+
+
+
+def logout_user(request):
+
+    logout(request)
+
     return redirect('nessie:index')
 
 class Login(generic.TemplateView):
