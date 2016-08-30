@@ -20,12 +20,17 @@ class IndexView(generic.ListView):
   def get_queryset(self):
     return Event.objects.all()
 
+
+
 class EventCreate(CreateView):
   model = Event
   fields = ['name', 'description', 'city', 'start_date', 'end_date', 'attendee_limit']
 
+
+
 class Register(generic.TemplateView):
   template_name='nessie/register_user.html'
+
 
 def register_user(request):
     username = request.POST['username']
@@ -39,9 +44,35 @@ def register_user(request):
 
 
 
+
+class Login(generic.TemplateView):
+
+    template_name = 'nessie/login.html'
+
+
+def loginUser(request):
+    '''
+    Login module for users
+    '''
+    userName = request.POST['username']
+    passWord = request.POST['password']
+    auth = authenticate(username=userName, password=passWord)
+
+    if auth:
+        try:
+            user = authenticateUser(request, username, password)  # returnsuser object if user is authenticated
+            login(request, user)
+            return render(request, 'nessie/index.html')
+        except:
+            return redirect('nessie:index')
+    else:
+        return redirect('nessie:index')
+
+
+
 def authenticate_user(request, username, password):
 
-    user = authenticate(username=userName, password=passWord)
+    user = authenticate(username=username, password=password)
 
     if user is not None:
         return user
@@ -50,44 +81,10 @@ def authenticate_user(request, username, password):
 
 
 
+
 def logout_user(request):
 
     logout(request)
 
     return redirect('nessie:index')
-
-class Login(generic.TemplateView):
-    '''
-    Handles showing the login page
-    '''
-    template_name = 'nessie/login.html'
-
-
-class FailedLogin(generic.TemplateView):
-    '''
-    Handles showing error page for failed logins
-    '''
-    template_name = 'nessie/failedLogin.html'
-
-
-def loginUser(request):
-    '''
-    Login module for users
-    '''
-    userName = request.POST['userName']
-    passWord = request.POST['passWord']
-    auth = authenticate(username=userName, password=passWord)
-
-    if auth:
-        try:
-            user = authenticateUser(request, userName, passWord)  # returns a user object if user is authenticated
-            login(request, user)
-            return render(request, 'nessie/profile.html')
-        except:  # I dont know what the exception would be if the user authentication works but the login doesn't
-            return HttpResponseRedirect('../failedLogin/')
-    else:
-        return HttpResponseRedirect('../failedLogin/')
-
-
-
 
