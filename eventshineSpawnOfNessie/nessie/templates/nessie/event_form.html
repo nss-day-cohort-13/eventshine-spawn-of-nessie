@@ -1,11 +1,16 @@
+{% extends 'nessie/base.html' %}
+{%block body%}
+
 <div>
-  <form class = 'form-horizontal' action="" method="post">
+  <form class = '' action="" method="post">
     {% csrf_token %}
     {% include 'nessie/form-template.html' %}
-    <div class="form-group">
-      <div class="col-sm-offset-2 col sm-10">
-        <button type="submit" class="btn btn-success">Submit</button>
+    <div>
+      <div>
+        <button type="submit" class="">Submit</button>
       </div>
     </div>
   </form>
 </div>
+<p><a href="{% url 'nessie:index' %}">Home</a>.</p>
+{% endblock%}

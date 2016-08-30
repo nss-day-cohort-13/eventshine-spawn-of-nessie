@@ -9,9 +9,9 @@ urlpatterns = [
 
     url(r'^login_user/', views.login_user, name='login_user'),
 
-    url(r'^login/', views.Login.as_view(), name='Login'),
+    url(r'^login/', views.Login.as_view(), name='login'),
 
-    url(r'^logout/', views.logout_user, name='logout'),
+    url(r'^login/', views.logout_user, name='logout'),
 
     url(r'^register_user/', views.register_user, name='register_user'),
 

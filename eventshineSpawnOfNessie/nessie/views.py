@@ -57,11 +57,11 @@ def login_user(request):
         try:
             user = authenticate_user(request, username, password)  # returnsuser object if user is authenticated
             login(request, user)
-            return render(request, 'nessie/login.html')
+            return render(request, 'nessie/index.html')
         except:
-            return redirect('nessie:index')
+            return redirect('nessie:login')
     else:
-        return redirect('nessie:index')
+        return redirect('nessie:login')
 
 
 
@@ -76,10 +76,8 @@ def authenticate_user(request, username, password):
 
 
 
-
 def logout_user(request):
 
     logout(request)
 
-    return redirect('nessie:index')
 
