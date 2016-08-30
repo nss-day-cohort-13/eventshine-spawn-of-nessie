@@ -1,13 +1,11 @@
 
-{% extends 'nessie/base.html' %}
-{% block body%}
-<form class="form-horizontal" role="form" action="{% url 'nessie:login'%}" method="post" enctype="multipart/form-data">
-	{% csrf_token %}
-	{% include 'nessie/form-template.html' %}
-	<div class="form-group">
-	    <div class="col-sm-offset-2 col-sm-10">
-	        <button type="submit" class="btn btn-success">Submit</button>
-	    </div>
-	</div>
+
+<form action="{% url 'nessie:login_user' %}" method="post" accept-charset="utf-8">{% csrf_token %}
+  Username:<br>
+  <input name="username" type="text"><br>
+  Password:<br>
+  <input name="password" type="text"><br>
+  <button type="submit">Submit</button>
 </form>
-{% endblock%}
+
+<p><a href="{% url 'nessie:index' %}">Return to homepage</a>.</p>

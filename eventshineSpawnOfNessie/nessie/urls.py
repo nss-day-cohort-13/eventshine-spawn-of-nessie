@@ -7,11 +7,11 @@ urlpatterns = [
 
     url(r'^register/', views.Register.as_view(), name='register'),
 
-    url(r'^loginUser/', views.loginUser.as_view(), name='loginUser'),
+    url(r'^login_user/', views.login_user.as_view(), name='login_user'),
 
-    url(r'^logout/', views.logoutUser.as_view(), name='logout'),
+    url(r'^logout/', views.logout_user.as_view(), name='logout'),
 
-    url(r'^failedLogin/', views.failedLogin.as_view(), name='failedLogin'),
+    url(r'^failed_login/', views.failed_login.as_view(), name='failed_login'),
 
     url(r'^register_user/', views.register_user, name='register_user'),
 
