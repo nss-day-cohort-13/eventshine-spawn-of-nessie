@@ -1,0 +1,15 @@
+
+
+<form action="{% url 'nessie:register_user' %}" method="post" accept-charset="utf-8">{% csrf_token %}
+
+
+  Username:<br>
+  <input name="username" type="text"><br>
+  Password:<br>
+  <input name="password" type="text"><br>
+  Email:<br>
+  <input name="email" type="text"><br>
+  <button type="submit">Submit</button>
+</form>
+
+<p><a href="{% url 'nessie:index' %}">Return to homepage</a>.</p>
