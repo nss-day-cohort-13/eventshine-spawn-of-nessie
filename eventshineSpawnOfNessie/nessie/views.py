@@ -1,16 +1,14 @@
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
 #whenever you want to make a form to create, update, view a new object
-from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import render, redirect
 #lets us redirect user on login
 from django.contrib.auth import authenticate, login, logout
-
+from django.contrib.auth.decorators import login_required
 #takes username and password, verifies they are a user and they exist in the database
 #login attaches session id so user doesnt have to login on every new page you visit
 from django.views import generic
-from django.views.generic import View
-from .models import Event, Venue
+from .models import *
 from django.contrib.auth.models import User
 
 class IndexView(generic.ListView):
@@ -51,18 +49,15 @@ class Login(generic.TemplateView):
 
 
 def login_user(request):
-    '''
-    Login module for users
-    '''
-    userName = request.POST['username']
-    passWord = request.POST['password']
-    auth = authenticate(username=userName, password=passWord)
+    username = request.POST['username']
+    password = request.POST['password']
+    auth = authenticate(username=username, password=password)
 
     if auth:
         try:
             user = authenticate_user(request, username, password)  # returnsuser object if user is authenticated
             login(request, user)
-            return render(request, 'nessie/index.html')
+            return render(request, 'nessie/login.html')
         except:
             return redirect('nessie:index')
     else:
