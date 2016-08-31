@@ -10,6 +10,20 @@ from django.contrib.auth.decorators import login_required
 from django.views import generic
 from .models import *
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+
+
+
+class EventUserCreate(CreateView):
+  model = EventUser
+  fields = ['user, event']
+
+  def form_valid(self, form):
+      # form.instance.user= self.request.user
+      # form.instance.event=self.request.event
+      return super(EventUserCreate, self).form_valid(form)
+
+
 
 class IndexView(generic.ListView):
   template_name = 'nessie/index.html'
@@ -22,7 +36,13 @@ class IndexView(generic.ListView):
 
 class EventCreate(CreateView):
   model = Event
-  fields = ['name', 'description', 'city', 'start_date', 'end_date', 'attendee_limit']
+  fields = ['venue', 'name', 'description', 'city', 'start_date', 'end_date', 'attendee_limit']
+
+  # def current_venue(request):
+  #   currentVenue = request.POST['venue']
+
+  def form_valid(self, form):
+    return super(EventCreate, self).form_valid(form)
 
 
 
