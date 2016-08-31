@@ -16,4 +16,6 @@ urlpatterns = [
     url(r'^register_user/', views.register_user, name='register_user'),
 
     url(r'event/add$', views.EventCreate.as_view(), name='event_add'),
+
+    url(r'event_user/add$', views.EventUserCreate.as_view(), name='event_user'),
 ]
