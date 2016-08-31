@@ -24,8 +24,8 @@ class Event(models.Model):
     return self.name, self.description, self.city, self.start_date, self.end_date, self.attendee_limit
 
 class EventUser(models.Model):
-    user_Id = models.ForeignKey(User, on_delete=models.CASCADE)
-    event_Id = models.ForeignKey(Event, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
     is_creator = models.BooleanField(default=False)
 
 

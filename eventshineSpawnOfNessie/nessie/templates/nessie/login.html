@@ -1,3 +1,5 @@
+{% extends 'nessie/base.html' %}
+{%block body%}
 
 
 <form action="{% url 'nessie:login_user' %}" method="post" accept-charset="utf-8">{% csrf_token %}
@@ -8,4 +10,5 @@
   <button type="submit">Submit</button>
 </form>
 
-<p><a href="{% url 'nessie:index' %}">Return to homepage</a>.</p>
+<p><a href="{% url 'nessie:index' %}">Home</a>.</p>
+{% endblock%}
